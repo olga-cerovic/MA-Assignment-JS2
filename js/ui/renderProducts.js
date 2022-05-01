@@ -1,7 +1,8 @@
-// import { getExistingFaves } from "../utils/faveFunctions.js";
-
+import { getExistingFaves } from "./faveFunction.js";
 export function renderProducts(productsToRender) {
   const productContainer = document.querySelector(".product-container");
+
+  const favourites = getExistingFaves();
 
   productContainer.innerHTML = "";
 
@@ -46,17 +47,28 @@ export function renderProducts(productsToRender) {
   }
 }
 
-function getExistingFaves() {
-  const faves = localStorage.getItem("favourites");
-  // console.log(faves);
+// function getExistingFaves() {
+//   const faves = localStorage.getItem("favourites");
+//   // console.log(faves);
 
-  if (faves === null) {
-    return [];
-  } else {
-    return JSON.parse(faves);
-  }
-}
+//   if (faves === null) {
+//     return [];
+//   } else {
+//     return JSON.parse(faves);
+//   }
+// }
 
 function saveFaves(faves) {
   localStorage.setItem("favourites", JSON.stringify(faves));
 }
+
+const favFavPage = getExistingFaves();
+
+// const favesContainer = document.querySelector(".faves-container");
+
+// favFavPage.forEach((favourite) => {
+//   favesContainer.innerHTML += `<div class="product"
+//                                     <h4>${favourite.title}</h4>
+//                                     <i class="fa fa-heart"></i>
+//                                   </div>`;
+// });
