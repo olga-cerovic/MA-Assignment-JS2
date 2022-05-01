@@ -7,10 +7,24 @@ export function renderProducts(productsToRender) {
   productContainer.innerHTML = "";
 
   productsToRender.forEach(function (product) {
+    let cssClass = "far";
+
+    const doesObjectExist = favourites.find(function (fave) {
+      console.log(fave);
+
+      return parseInt(fave.id) === product.id;
+    });
+
+    console.log(doesObjectExist);
+
+    if(doesObjectExist) {
+      cssClass = "fa";
+    }
+
     productContainer.innerHTML += `<div class="product">
                                                 <h4>${product.title}</h4>
                                                 <p>${product.price}</p>
-                                                <i class="far fa-heart" data-id="${product.id}" data-title="${product.title}">
+                                                <i class="${cssClass} fa-heart" data-id="${product.id}" data-title="${product.title}">
                                             </div>`;
   });
 
