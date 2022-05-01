@@ -17,14 +17,14 @@ export function renderProducts(productsToRender) {
 
     console.log(doesObjectExist);
 
-    if(doesObjectExist) {
+    if (doesObjectExist) {
       cssClass = "fa";
     }
 
     productContainer.innerHTML += `<div class="product">
                                                 <h4>${product.title}</h4>
                                                 <p>${product.price}</p>
-                                                <i class="${cssClass} fa-heart" data-id="${product.id}" data-title="${product.title}">
+                                                <i class="${cssClass} fa-heart" data-id="${product.id}" data-title="${product.title}" data-price="${product.price}">
                                             </div>`;
   });
 
@@ -35,14 +35,13 @@ export function renderProducts(productsToRender) {
   });
 
   function handleClick(event) {
-    // console.log(event);
     event.target.classList.toggle("fa");
     event.target.classList.toggle("far");
 
     const id = event.target.dataset.id;
     const title = event.target.dataset.title;
+    const price = event.target.dataset.price;
 
-    // console.log("id", id);
 
     const currentFaves = getExistingFaves();
 
@@ -51,7 +50,7 @@ export function renderProducts(productsToRender) {
     });
 
     if (productItemExists === undefined) {
-      const productItem = { id: id, title: title };
+      const productItem = { id: id, title: title, price: price };
       currentFaves.push(productItem);
       saveFaves(currentFaves);
     } else {
@@ -61,16 +60,7 @@ export function renderProducts(productsToRender) {
   }
 }
 
-// function getExistingFaves() {
-//   const faves = localStorage.getItem("favourites");
-//   // console.log(faves);
 
-//   if (faves === null) {
-//     return [];
-//   } else {
-//     return JSON.parse(faves);
-//   }
-// }
 
 function saveFaves(faves) {
   localStorage.setItem("favourites", JSON.stringify(faves));
@@ -78,11 +68,3 @@ function saveFaves(faves) {
 
 const favFavPage = getExistingFaves();
 
-// const favesContainer = document.querySelector(".faves-container");
-
-// favFavPage.forEach((favourite) => {
-//   favesContainer.innerHTML += `<div class="product"
-//                                     <h4>${favourite.title}</h4>
-//                                     <i class="fa fa-heart"></i>
-//                                   </div>`;
-// });

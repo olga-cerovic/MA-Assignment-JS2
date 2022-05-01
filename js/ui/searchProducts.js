@@ -14,10 +14,6 @@ export function searchProducts(products) {
       }
     });
 
-    // console.log(filteredProducts);
-
-    // productsToRender = filteredProducts;
-
     renderProducts(filteredProducts);
   };
 }
