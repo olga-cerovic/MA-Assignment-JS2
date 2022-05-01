@@ -1,9 +1,7 @@
+import { url } from "./data/url.js";
 import { renderProducts } from "./ui/renderProducts.js";
 import { searchProducts } from "./ui/searchProducts.js";
 import { displayMessage } from "./ui/displayMessage.js";
-
-
-const url = "https://fakestoreapi.com/products";
 
 async function getProducts() {
   try {

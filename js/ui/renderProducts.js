@@ -1,4 +1,5 @@
 import { getExistingFaves } from "./faveFunction.js";
+import { saveFaves } from "./saveFaves.js";
 export function renderProducts(productsToRender) {
   const productContainer = document.querySelector(".product-container");
 
@@ -42,7 +43,6 @@ export function renderProducts(productsToRender) {
     const title = event.target.dataset.title;
     const price = event.target.dataset.price;
 
-
     const currentFaves = getExistingFaves();
 
     const productItemExists = currentFaves.find(function (fave) {
@@ -59,12 +59,3 @@ export function renderProducts(productsToRender) {
     }
   }
 }
-
-
-
-function saveFaves(faves) {
-  localStorage.setItem("favourites", JSON.stringify(faves));
-}
-
-const favFavPage = getExistingFaves();
-
