@@ -5,7 +5,7 @@ const favourites = getExistingFaves();
 const productContainer = document.querySelector(".product-container");
 
 if (favourites.length === 0) {
-  productContainer.innerHTML = "You haven't chosen any favorites yet.";
+  productContainer.innerHTML = `<div class="no-faves-message">No favorites yet.</>`;
 }
 
 favourites.forEach((favourite) => {
